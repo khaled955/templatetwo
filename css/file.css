@@ -28,7 +28,6 @@ margin-right: auto;
 .main-heading{
 text-align: center;
 
-
 }
 .main-heading h2{
    text-transform: uppercase; 
@@ -126,7 +125,9 @@ max-width: 100%;
 
 
 
-
+header{
+    overflow-x: hidden;
+}
 
 header .container{
     display: flex;
@@ -1398,3 +1399,19 @@ color: var(--mainColor);
 
 
 /* end footer */
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
