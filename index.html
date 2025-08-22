@@ -38,13 +38,14 @@
 
 
 <!-- start header -->
-<header>
+<!-- <header>
     <div class="container">
 <a href="#">
     <img src="logo 2.png" alt="kasper logo">
 </a>
 
 <nav>
+      <i class="fa-solid fa-bars toggle-menu" id="navToggle" aria-label="Menu" aria-expanded="false"></i>
 
 
 <ul>
@@ -71,13 +72,61 @@
 
 </nav>
 </div>
-</header>
+</header> -->
+
+
+  <header>
+        <div class="container">
+            <div class="logo">
+                <a href="#">
+                    <img src="logo 2.png" alt="Kasper Logo">
+                </a>
+            </div>
+            
+            <!-- Desktop Navigation -->
+            <nav class="desktop-nav">
+                <ul>
+                    <li><a href="#home" class="active">Home</a></li>
+                    <li><a href="#services">Services</a></li>
+                    <li><a href="#portfolio">Portfolio</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#pricing">Pricing</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </nav>
+            
+            <!-- Mobile Navigation Toggle -->
+            <button class="mobile-nav-toggle" id="mobileNavToggle">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
+        
+        <!-- Mobile Navigation -->
+        <nav class="mobile-nav" id="mobileNav">
+            <ul>
+                <li><a href="#home" class="active">Home</a></li>
+                <li><a href="#services">Services</a></li>
+                <li><a href="#portfolio">Portfolio</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#pricing">Pricing</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+
+
+
+
+
+
+
 
 
 <!-- end header -->
 
 <!-- start landing -->
-<div class="landing">
+<div class="landing" id="home">
     <div class="overlay">
 
     </div>
@@ -115,7 +164,7 @@ blandit aliquet elit, eget tincidunt.</p>
 
 
 <!-- start service section -->
-<div class="services">
+<div class="services" id="services">
     <div class="container">
 
 
@@ -167,6 +216,8 @@ blandit aliquet elit, eget tincidunt.</p>
     </div>
 </div>
 <!-- end service section -->
+
+
 <!-- start design -->
 <div class="design">
     <div class="image">
@@ -204,7 +255,7 @@ blandit aliquet elit, eget tincidunt.</p>
         <li>print</li>
                     </ul>
 
-<div class="portifolio">
+<div class="portifolio" id="portfolio">
     <div class="container">
   
             <!-- start images section container -->
@@ -294,7 +345,7 @@ blandit aliquet elit, eget tincidunt.</p>
  </div>
 </div>
 <!-- end video section -->
-<div class="about-us">
+<div class="about-us" id="about">
     <div class="main-heading">
     <h2>about us</h2>
     <p>Curabitur arcu erat, accumsan id imperdiet et, porttitor at sem. Mauris 
@@ -450,7 +501,7 @@ blandit aliquet elit, eget tincidunt.</p>
     </div>
     </div>
 <!-- start pricing -->
-<div class="pricing">
+<div class="pricing" id="pricing">
 <div class="container">
 <div class="plans">
 
@@ -531,7 +582,7 @@ blandit aliquet elit, eget tincidunt.</p>
 </div>
 <!-- end pricing -->
 <!-- start subscribe section -->
-<div class="subscribe">
+<div class="subscribe" id="contact">
     <div class="container">
         <form action="">
             <i class="fa-regular fa-envelope"></i>
@@ -597,6 +648,68 @@ all right are reserved
     </div>
 </div>
 <!-- end footer -->
+
+
+
+<script>
+        // Mobile Navigation Toggle
+        const mobileNavToggle = document.getElementById('mobileNavToggle');
+        const mobileNav = document.getElementById('mobileNav');
+        const icon = mobileNavToggle.querySelector('i');
+        
+        mobileNavToggle.addEventListener('click', () => {
+            mobileNav.classList.toggle('open');
+            
+            // Toggle between hamburger and close icon
+            if (mobileNav.classList.contains('open')) {
+                icon.classList.remove('fa-bars');
+                icon.classList.add('fa-times');
+            } else {
+                icon.classList.remove('fa-times');
+                icon.classList.add('fa-bars');
+            }
+        });
+        
+        // Close mobile nav when a link is clicked
+        const mobileLinks = document.querySelectorAll('.mobile-nav a');
+        mobileLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                mobileNav.classList.remove('open');
+                icon.classList.remove('fa-times');
+                icon.classList.add('fa-bars');
+            });
+        });
+        
+        // Close mobile nav when clicking outside
+        document.addEventListener('click', (e) => {
+            if (mobileNav.classList.contains('open') && 
+                !e.target.closest('#mobileNav') && 
+                !e.target.closest('#mobileNavToggle')) {
+                mobileNav.classList.remove('open');
+                icon.classList.remove('fa-times');
+                icon.classList.add('fa-bars');
+            }
+        });
+        
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                if (targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 70,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+</script>
+
 
 </body>
 </html>

@@ -154,7 +154,7 @@ left: 15px;
 header .container img{
     width:40px;
 }
- header .container nav{flex: 1;
+ header .container nav{
     display: flex;
     justify-content: flex-end;
     align-items: center;
@@ -219,7 +219,7 @@ nav .toggle-menu{
 }
 
 
-nav .toggle-menu:hover +ul{
+/* nav .toggle-menu:hover +ul{
 display: flex;
 flex-direction: column;
 position: absolute;
@@ -231,7 +231,7 @@ background-color: rgb(0 0 0 /50%);
 }
 nav .toggle-menu:hover + ul li a{
     padding: 15px;
-}
+} */
 
 header{position: absolute;
     z-index: 2;
@@ -1402,6 +1402,420 @@ color: var(--mainColor);
 
 
 
+
+header .container nav ul {
+  display: flex;
+  justify-content: space-around;
+}
+@media (max-width: 767px) {
+  .container nav ul {
+    display: none;
+  }
+}
+nav .toggle-menu {
+  font-size: 22px;
+}
+@media (min-width: 768px) {
+  nav .toggle-menu {
+    display: none;
+  }
+}
+
+
+
+/* --- Navbar collapse (mobile) --- */
+@media (max-width: 767px) {
+  header .container nav { position: relative; }
+
+  /* Hide the list by default on phones */
+  header .container nav ul {
+    display: none;
+    position: absolute;
+    inset-inline: 0;
+    top: 100%;
+    background: rgba(0,0,0,0.1);
+    padding: 12px 0;
+    flex-direction: column;
+    z-index: 10;
+  }
+
+  /* When nav has .open → show the list */
+  header .container nav.open ul { display: flex; }
+
+  /* Burger styles */
+  header .container nav .toggle-menu {
+    display: inline-block;
+    color: #fff;
+    cursor: pointer;
+    padding: 10px;
+    font-size: 22px;
+  }
+
+  header .container nav ul a {
+    display: block;
+    color: #fff;
+    padding: 10px 16px;
+  }
+}
+
+/* Desktop: show links, hide burger */
+@media (min-width: 768px) {
+  header .container nav ul { display: flex; }
+  header .container nav .toggle-menu { display: none; }
+}
+
+
+
+
+header {
+  position: absolute;
+  z-index: 2;
+  width: 100%;
+  left: 0;
+}
+header .container a img {
+  height: 40px;
+}
+header .container nav {
+  display: flex;
+  align-items: center;
+}
+header .container nav ul li a {
+  display: block;
+  color: white;
+  text-decoration: none;
+  font-size: 14px;
+  transition: 0.3s;
+  padding: 40px 10px;
+  position: relative;
+  z-index: 2;
+}
+header .container nav ul li a.active,
+header .container nav ul li a:hover {
+  color: var(--mainColor);
+  border-bottom: 1px solid var(--mainColor);
+}
+
+/* start landing section */
+.landing {
+  background-color: blue;
+  background-image: url(../back.jpg);
+  background-size: cover;
+  position: relative;
+}
+/* end landing section */
+.landing .overlay {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  background-color: rgb(0 0 0 /60%);
+}
+.landing .text {
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 50%;
+  padding: 50px;
+  background-color: var(--transparentColor);
+  color: white;
+  display: flex;
+  justify-content: flex-end;
+}
+.landing .text .content {
+  max-width: 500px;
+}
+@media (max-width: 767px) {
+  .landing .text {
+    width: 100%;
+  }
+  .landing .text .content {
+    max-width: 100%;
+  }
+}
+.landing .text .content h2 {
+  font-size: 32px;
+  font-weight: normal;
+  line-height: 1.5;
+  margin-bottom: 20px;
+}
+.landing .text .content p {
+  line-height: 2;
+  font-size: 14px;
+}
+.change-background {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #ddd;
+}
+.fa-angle-left {
+  left: 30px;
+}
+.fa-angle-right {
+  right: 30px;
+}
+.landing .bullets {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  bottom: 30px;
+  display: flex;
+}
+.landing .bullets li {
+  width: 20px;
+  height: 20px;
+  border: 1px solid #fff;
+  margin-right: 10px;
+  border-radius: 50%;
+}
+.landing .bullets li.active {
+  background-color: var(--mainColor);
+  border-color: var(--mainColor);
+}
+
+/* ... (rest of your original stylesheet continues unchanged) ... */
+
+/* --- Navbar collapse (mobile) --- */
+@media (max-width: 767px) {
+  header .container nav { position: relative; }
+
+  /* Hide the list by default on phones */
+  header .container nav ul {
+    display: none;
+    position: absolute;
+    inset-inline: 0;
+    top: 100%;
+    background: rgba(0,0,0,0.1);
+    padding: 12px 0;
+    flex-direction: column;
+    z-index: 10;
+  }
+
+  /* When nav has .open → show the list */
+  header .container nav.open ul { display: flex; }
+
+  /* Burger styles */
+  header .container nav .toggle-menu {
+    display: inline-block;
+    color: #fff;
+    cursor: pointer;
+    padding: 10px;
+    font-size: 22px;
+  }
+
+  header .container nav ul a {
+    display: block;
+    color: #fff;
+    padding: 10px 16px;
+  }
+}
+
+/* Desktop: show links, hide burger */
+@media (min-width: 768px) {
+  header .container nav ul { display: flex; }
+  header .container nav .toggle-menu { display: none; }
+}
+
+/* Fix mobile dropdown width + stacking */
+@media (max-width: 767px) {
+  /* let nav span the full header width */
+  header .container nav {
+    position: relative;
+    width: 100%;
+    flex: 1 1 auto;
+    min-width: 0;
+  }
+  /* keep the burger on the right and clickable above the menu */
+  header .container nav .toggle-menu {
+    position: absolute;
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 11;
+  }
+  /* make the dropdown fill the nav width */
+  header .container nav ul {
+    left: 0;
+    right: 0;
+  }
+}
+
+
+
+/* --- FIX MOBILE NAV --- */
+header { z-index: 1000; } /* ensure menu is above hero overlays */
+
+@media (max-width: 767px) {
+  /* nav spans full header width on phones */
+  header .container nav {
+    position: relative;
+    width: 100%;
+    flex: 1 1 auto;
+    min-width: 0;
+  }
+
+  /* burger sits above dropdown */
+  header .container nav .toggle-menu {
+    position: absolute;
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 11;
+    color: #fff;
+    cursor: pointer;
+    padding: 10px;
+    font-size: 22px;
+  }
+
+  /* dropdown: full width, solid backdrop, column layout */
+  header .container nav ul {
+    display: none;               /* hidden by default */
+    position: absolute;
+    left: 0;                     /* use left/right instead of inset-inline for compatibility */
+    right: 0;
+    top: 100%;
+    background: rgba(0,0,0,0.1); /* was 0.1 in an older block */
+    padding: 8px 0;
+    flex-direction: column;
+    z-index: 10;
+  }
+  header .container nav.open ul { display: flex; }
+
+  /* use same specificity as your desktop rule so this wins on mobile */
+  header .container nav ul li a {
+    display: block;
+    color: #fff;
+    padding: 12px 16px;          /* overrides the 40px 10px desktop padding */
+  }
+}
+
+/* desktop keeps links visible and hides burger */
+@media (min-width: 768px) {
+  header .container nav ul { display: flex; }
+  header .container nav .toggle-menu { display: none; }
+}
+
+
+
+
+
+
+   /* Header Styles */
+        header {
+            background-color: rgba(0, 0, 0, 0.9);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+        }
+        
+        header .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            /* padding: 15px; */
+        }
+        
+        /* .logo img {
+            height: 30px;
+        } */
+        
+        /* Desktop Navigation */
+        .desktop-nav ul {
+            display: flex;
+            list-style: none;
+        }
+        
+        .desktop-nav ul li a {
+            color: white;
+            text-decoration: none;
+            /* padding: 10px 15px; */
+            display: block;
+            font-size: 14px;
+            text-transform: capitalize;
+            transition: color 0.3s;
+        }
+        
+        .desktop-nav ul li a:hover,
+        .desktop-nav ul li a.active {
+            color: #19c8fa;
+            border-bottom: 1px solid #19c8fa;
+        }
+        
+        /* Mobile Navigation */
+        .mobile-nav-toggle {
+            display: none;
+            background: none;
+            border: none;
+            color: white;
+            font-size: 24px;
+            cursor: pointer;
+            padding: 5px;
+        }
+        
+        .mobile-nav {
+            position: fixed;
+            top: 60px;
+            left: 0;
+            width: 100%;
+            background-color: rgba(0, 0, 0, 0.95);
+            height: 0;
+            overflow: hidden;
+            transition: height 0.4s ease;
+            z-index: 999;
+        }
+        
+        .mobile-nav.open {
+            height: calc(100vh - 60px);
+        }
+        
+        .mobile-nav ul {
+            list-style: none;
+            padding: 20px;
+        }
+        
+        .mobile-nav ul li {
+            margin-bottom: 15px;
+        }
+        
+        .mobile-nav ul li a {
+            color: white;
+            text-decoration: none;
+            display: block;
+            padding: 12px 15px;
+            font-size: 18px;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+        
+        .mobile-nav ul li a:hover,
+        .mobile-nav ul li a.active {
+            background-color: rgba(25, 200, 250, 0.2);
+            color: #19c8fa;
+        }
+        
+     
+        
+        /* Responsive Styles */
+        @media (max-width: 992px) {
+            .desktop-nav {
+                display: none;
+            }
+            
+            .mobile-nav-toggle {
+                display: block;
+            }
+        }
+        
+        @media (min-width: 993px) {
+            .mobile-nav {
+                display: none;
+            }
+        }
 
 
 
